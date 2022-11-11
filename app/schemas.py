@@ -9,3 +9,6 @@ class VehicleOut(BaseModel):
     id: int
     name: str
     created_at: datetime
+
+class VehicleLogin(VehicleCreate):
+    pass
