@@ -7,6 +7,8 @@ import time
 from .config import settings
 
 
+
+
 # SQLALCHEMY_DATABASE_URL = "postgresql://<username>:<password>@<ip-address/hostname>/<database-name>"
 SQLALCHEMY_DATABASE_URL=f"postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}"
 
@@ -22,6 +24,13 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# DIRECT DB CONNECTION WITH PSYCOPG2
+try:
+    conn=psycopg2.connect(host=settings.database_hostname,database=settings.database_name,user=settings.database_username,password=settings.database_password,cursor_factory=RealDictCursor)
+    cursor=conn.cursor()
+except Exception as error:
+    print("Connecting to database failed")
 
 # while True:
 #     try:
