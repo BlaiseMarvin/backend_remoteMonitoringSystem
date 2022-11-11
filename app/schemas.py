@@ -10,5 +10,6 @@ class VehicleOut(BaseModel):
     name: str
     created_at: datetime
 
-class VehicleLogin(VehicleCreate):
-    pass
+class VehicleLogin(BaseModel):
+    name: str
+    password: str
