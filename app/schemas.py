@@ -26,4 +26,8 @@ class TokenData(BaseModel):
     id:Optional[str]=None
 
 class RecordOut(DataRecord):
+    id: int
     owner_id:int
+
+class MultipleRecordOut(DataRecord):
+    record_id: int
